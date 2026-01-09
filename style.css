@@ -283,17 +283,68 @@ header.scrolled .logo-img {
     position: absolute;
     top: 0;
     right: 0;
-    width: 50%;
+    width: 35%;
+    /* Reduced from 50% */
     height: 100%;
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.1) 100%);
-    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.03) 0%, rgba(220, 38, 38, 0.08) 100%);
+    /* Softer gradient */
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    /* Adjusted angle */
     z-index: 1;
     display: block;
-    /* Show shape again */
 }
 
-.hero-shape {
-    display: none;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero-section {
+        padding: 100px 0 60px;
+        min-height: auto;
+        /* Relax height constraint */
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        margin-top: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        margin-left: 0 !important;
+        justify-content: center;
+    }
+
+    .hero-cta a {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+    .hero-shape {
+        width: 100%;
+        opacity: 0.1;
+        clip-path: none;
+        height: 50%;
+        /* limit height on mobile */
+    }
 }
 
 /* Profile Section */
