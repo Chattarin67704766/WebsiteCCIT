@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บริการของเรา | บริษัท เชี่ยวชาญไอที โซลูชั่น จำกัด</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Modern Service Page Styles */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            --card-hover-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .page-header {
+            padding: 120px 0 80px;
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Background decor */
+        .page-header::before,
+        .page-header::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+        }
+
+        .page-header::before {
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(220, 38, 38, 0.05);
+        }
+
+        .page-header::after {
+            bottom: -50px;
+            right: -50px;
+            width: 400px;
+            height: 400px;
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #1f2937, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* PRICING / PLANS SECTION */
+        .plans-section {
+            padding: 4rem 0 6rem;
+            background: #fff;
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .plan-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid #f3f4f6;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+
+        /* Featured Plan (Advance) */
+        .plan-card.featured {
+            background: var(--primary-gradient);
+            color: white;
+            transform: scale(1.05);
+            z-index: 10;
+            border: none;
+        }
+
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .plan-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plan-card.featured .plan-name {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .plan-card:not(.featured) .plan-name {
+            color: var(--primary-red);
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .plan-card:not(.featured) .plan-features li {
+            color: #4b5563;
+        }
+
+        .plan-features li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+        }
+
+        .plan-card:not(.featured) .plan-features li i {
+            color: #10b981;
+        }
+
+        /* Green check */
+        .plan-card.featured .plan-features li i {
+            color: #fff;
+        }
+
+        .plan-footer {
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .btn-plan {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .plan-card:not(.featured) .btn-plan {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .plan-card:not(.featured) .btn-plan:hover {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .plan-card.featured .btn-plan {
+            background: white;
+            color: var(--primary-red);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-card.featured .btn-plan:hover {
+            background: #f9fafb;
+            transform: translateY(-2px);
+        }
+
+        /* PROMOTION BANNER */
+        .promo-section {
+            background: #111827;
+            /* Dark bg */
+            padding: 3rem 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .promo-badge {
+            background: #ef4444;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* HARDWARE & SOFTWARE */
+        .products-section {
+            padding: 6rem 0;
+            background: #f9fafb;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            position: relative;
+            /* Context for popup */
+            z-index: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--primary-red);
+            z-index: 10;
+            /* Bring to front on hover */
+        }
+
+        /* POPUP STYLES */
+        .popup-details {
+            position: absolute;
+            top: 100%;
+            /* Position below card */
+            left: 0;
+            width: 100%;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 0 0 1rem 1rem;
+            /* Rounded bottom */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--primary-red);
+            border-top: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: -1;
+            /* Behind card initially */
+            margin-top: -10px;
+            /* Slight overlap fix */
+        }
+
+        .product-card:hover .popup-details {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Flatten bottom corners of card when hovering */
+        .product-card:hover {
+            border-radius: 1rem 1rem 0 0;
+            border-bottom-color: transparent;
+        }
+
+        .popup-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .popup-list li {
+            font-size: 0.9rem;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+
+        .popup-list li::before {
+            content: '•';
+            color: var(--primary-red);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: #fee2e2;
+            color: var(--primary-red);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .product-card:hover .product-icon {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .product-info p {
+            font-size: 0.95rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .plan-card.featured {
+                transform: scale(1);
+            }
+
+            .plan-card.featured:hover {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Chiaochanit Solution Logo" class="logo-img">
+                    <span class="logo-text">CHIAOCHANIT SOLUTION</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">หน้าหลัก</a></li>
+                    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+                    <li><a href="service.html" class="active">บริการของเรา</a></li>
+                    <li><a href="gallery.html">ผลงานและการปฏิบัติงาน</a></li>
+                    <li><a href="customer.html">ลูกค้าของเรา</a></li>
+                    <li><a href="contact.html">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container header-content">
+            <h1>บริการ IT Outsource ครบวงจร</h1>
+            <p style="font-size: 1.2rem; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                เลือกแพ็คเกจการดูแลระบบไอทีที่เหมาะสมกับธุรกิจของคุณ พร้อมทีมงานผู้เชี่ยวชาญที่พร้อมดูแลตลอดเวลา
+            </p>
+        </div>
+    </div>
+
+    <!-- PLANS SECTION -->
+    <section class="plans-section">
+        <div class="container">
+            <div class="plan-grid">
+
+                <!-- Plan 1: Base -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-name">Base Contract</div>
+                        <p style="color: #6b7280; font-size: 0.9rem;">เริ่มต้นสำหรับธุรกิจขนาดเล็ก</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> <strong>IT Support:</strong> Remote / Phone / Email</li>
+                        <li><i class="fas fa-check"></i> HW & SW Audit</li>
+                        <li><i class="fas fa-check"></i> Onsite Service (Limited)</li>
+                        <li><i class="fas fa-check"></i> Monthly Report</li>
+                    </ul>
+                    <div class="plan-footer">
+                        <a href="contact.html" class="btn-plan">สนใจแพ็คเกจนี้</a>
+                    </div>
+                </div>
+
+                <!-- Plan 2: Advance (Featured) -->
+                <div class="plan-card featured">
+                    <div class="plan-header">
+                        <div class="plan-name">Advance Contract</div>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">ยอดนิยม! ครอบคลุมทุกความต้องการ</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> <strong>IT Support:</strong> Remote / Phone / Email</li>
+                        <li><i class="fas fa-check-circle"></i> HW & SW Audit</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Unlimited Onsite Service</strong></li>
+                        <li><i class="fas fa-check-circle"></i> Server Management</li>
+                        <li><i class="fas fa-check-circle"></i> Network Management</li>
+                        <li><i class="fas fa-check-circle"></i> Monthly Report</li>
+                    </ul>
+                    <div class="plan-footer">
+                        <a href="contact.html" class="btn-plan">ขอใบเสนอราคา</a>
+                    </div>
+                </div>
+
+                <!-- Plan 3: General -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-name">General Contract</div>
+                        <p style="color: #6b7280; font-size: 0.9rem;">ยืดหยุ่น จ่ายตามจริง</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-clock"></i> <strong>IT Support:</strong> Pay By Time</li>
+                        <li><i class="fas fa-headset"></i> Remote Service (2 Hour + Charge)</li>
+                        <li><i class="fas fa-car"></i> Onsite Service:</li>
+                        <li style="padding-left: 2.5rem; font-size: 0.9rem; color: #666;">• 2 Hour + Charge</li>
+                        <li style="padding-left: 2.5rem; font-size: 0.9rem; color: #666;">• Half Day / Full Day Rates
+                        </li>
+                    </ul>
+                    <div class="plan-footer">
+                        <a href="contact.html" class="btn-plan">ติดต่อสอบถาม</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOTION BANNER -->
+    <section class="promo-section">
+        <div class="container">
+            <div class="promo-content">
+                <div class="promo-badge">PROMOTION!</div>
+                <div class="promo-text">
+                    <h3 style="margin: 0; font-size: 1.5rem;">ทดลองใช้บริการฟรีครั้งแรก! (Without Contract)</h3>
+                    <p style="margin: 0.5rem 0 0; color: #d1d5db;">ให้บริการไม่เกิน 2 ชั่วโมง สำหรับลูกค้าใหม่</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HARDWARE & SOFTWARE -->
+    <section class="products-section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <h2 style="color: #1f2937; font-size: 2rem; margin-bottom: 0.5rem;">Hardware & Software Solutions</h2>
+                <p style="color: #6b7280;">จัดจำหน่ายและติดตั้งอุปกรณ์ไอทีแบรนด์ชั้นนำครบวงจร</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-desktop"></i></div>
+                    <div class="product-info">
+                        <h3>Computer & Hardware</h3>
+                        <p>PC, Notebook, Workstation สเปคตามการใช้งาน พร้อมประกันศูนย์</p>
+                    </div>
+                    <!-- Popup -->
+                    <div class="popup-details">
+                        <ul class="popup-list">
+                            <li>Dell</li>
+                            <li>HP</li>
+                            <li>Lenovo</li>
+                            <li>Asus</li>
+                            <li>Acer</li>
+                            <li>Apple</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-server"></i></div>
+                    <div class="product-info">
+                        <h3>Server & Storage</h3>
+                        <p>วางระบบเซิร์ฟเวอร์, NAS, Backup Solution เพื่อความปลอดภัยของข้อมูล</p>
+                    </div>
+                    <div class="popup-details">
+                        <ul class="popup-list">
+                            <li>Synology</li>
+                            <li>QNAP</li>
+                            <li>Dell PowerEdge</li>
+                            <li>HPE ProLiant</li>
+                            <li>Lenovo ThinkSystem</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon"><i class="fab fa-microsoft"></i></div>
+                    <div class="product-info">
+                        <h3>Software License</h3>
+                        <p>Microsoft 365, Windows, Adobe และซอฟต์แวร์ลิขสิทธิ์แท้อื่นๆ</p>
+                    </div>
+                    <div class="popup-details">
+                        <ul class="popup-list">
+                            <li>Microsoft 365</li>
+                            <li>Windows 11</li>
+                            <li>Adobe Creative Cloud</li>
+                            <li>AutoCAD</li>
+                            <li>ESET / Kaspersky</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-network-wired"></i></div>
+                    <div class="product-info">
+                        <h3>Network System</h3>
+                        <p>ออกแบบและติดตั้งระบบเครือข่าย WiFi, Router, Switch, Firewalls</p>
+                    </div>
+                    <div class="popup-details">
+                        <ul class="popup-list">
+                            <li>Cisco</li>
+                            <li>Ubiquiti (Unifi)</li>
+                            <li>Aruba</li>
+                            <li>Mikrotik</li>
+                            <li>TP-Link</li>
+                            <li>Fortinet</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-video"></i></div>
+                    <div class="product-info">
+                        <h3>CCTV & Security</h3>
+                        <p>กล้องวงจรปิดคมชัดสูง ระบบ Access Control ควบคุมการเข้าออก</p>
+                    </div>
+                    <div class="popup-details">
+                        <ul class="popup-list">
+                            <li>Hikvision</li>
+                            <li>Dahua</li>
+                            <li>HiLook</li>
+                            <li>ZKTeco</li>
+                            <li>Hip</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-print"></i></div>
+                    <div class="product-info">
+                        <h3>Printer & Supplies</h3>
+                        <p>เครื่องพิมพ์เลเซอร์/อิงค์เจ็ท หมึกพิมพ์ และบริการเช่าเครื่องถ่ายเอกสาร</p>
+                    </div>
+                    <div class="popup-details">
+                        <ul class="popup-list">
+                            <li>Epson</li>
+                            <li>Canon</li>
+                            <li>Brother</li>
+                            <li>HP</li>
+                            <li>Fuji Film</li>
+                            <li>Kyocera</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Simplified) -->
+    <footer>
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 Chiaochanit Solution Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

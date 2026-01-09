@@ -4,11 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Outsource Service | บริษัท เชี่ยวชาญไอที โซลูชั่น จำกัด</title>
+    <title>บริษัท เชี่ยวชาญไอที โซลูชั่น จำกัด | IT Outsource ครบวงจร</title>
     <link rel="icon" href="logo.jpg" type="image/jpeg">
-    <meta name="description" content="บริการ IT Outsource ครบวงจร โดยทีมงานมืออาชีพ">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Specific Styles for Landing Page Unique Sections */
+
+        /* Workflow Section */
+        .workflow-section {
+            padding: 5rem 0;
+            background: #fff;
+            position: relative;
+        }
+
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .workflow-steps::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: #e5e7eb;
+            z-index: 0;
+            display: none;
+            /* Hidden on mobile, shown on desktop via media query */
+        }
+
+        .step-item {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .step-circle {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: 2px solid var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--primary-red);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .step-item:hover .step-circle {
+            background: var(--primary-red);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2);
+        }
+
+        .step-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: #6b7280;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        /* Why Choose Us */
+        .why-us-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            text-align: left;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-bottom-color: var(--primary-red);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Strip */
+        .cta-strip {
+            background: #111827;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        @media (min-width: 900px) {
+            .workflow-steps::before {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-steps::before {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,17 +150,17 @@
     <header id="header">
         <div class="container">
             <nav>
-                <a href="#" class="logo">
+                <a href="index.html" class="logo">
                     <img src="logo.jpg" alt="Chiaochanit Solution Logo" class="logo-img">
                     <span class="logo-text">CHIAOCHANIT SOLUTION</span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="#main" class="active">หน้าหลัก</a></li>
-                    <li><a href="#profile">เกี่ยวกับเรา</a></li>
-                    <li><a href="#solution">บริการของเรา</a></li>
+                    <li><a href="index.html" class="active">หน้าหลัก</a></li>
+                    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+                    <li><a href="service.html">บริการของเรา</a></li>
                     <li><a href="gallery.html">ผลงานและการปฏิบัติงาน</a></li>
-                    <li><a href="#customer">ลูกค้าของเรา</a></li>
-                    <li><a href="#contact">ติดต่อเรา</a></li>
+                    <li><a href="customer.html">ลูกค้าของเรา</a></li>
+                    <li><a href="contact.html">ติดต่อเรา</a></li>
                 </ul>
                 <div class="mobile-menu-btn" style="display: none;">
                     <i class="fas fa-bars"></i>
@@ -36,269 +169,177 @@
         </div>
     </header>
 
-    <!-- Main / Hero Section -->
-    <section id="main">
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
         <div class="container">
-            <div class="hero-content fade-in">
-                <h1 class="hero-title">ยกระดับธุรกิจด้วย<br>โซลูชั่นไอทีที่เหนือกว่า</h1>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                    เราคือผู้เชี่ยวชาญด้านบริการ IT Outsource ที่พร้อมดูแลระบบสารสนเทศขององค์กรท่าน
-                    ด้วยมาตรฐานระดับสากล เพื่อให้ธุรกิจของท่านดำเนินไปอย่างราบรื่นและมีประสิทธิภาพสูงสุด
+            <div class="hero-content">
+                <span class="badge fade-in-up"
+                    style="background: var(--primary-red); color: white; padding: 0.5rem 1rem; border-radius: 4px; font-weight: 500; font-size: 0.9rem; letter-spacing: 1px;">PROFESSIONAL
+                    IT SERVICES</span>
+                <h1 class="hero-title fade-in-up"
+                    style="animation-delay: 0.1s; font-size: 4rem; margin-top: 1.5rem; margin-bottom: 1.5rem; line-height: 1.2;">
+                    บริการดูแลระบบไอที<br>
+                    <span style="color: var(--primary-red);">ครบวงจร</span> สำหรับองค์กร
+                </h1>
+                <p class="hero-subtitle fade-in-up"
+                    style="animation-delay: 0.2s; font-size: 1.25rem; color: #4b5563; max-width: 600px; margin-bottom: 2.5rem;">
+                    ดูแลระบบคอมพิวเตอร์และเครือข่ายอย่างมืออาชีพ เพื่อให้ธุรกิจของคุณราบรื่น ไร้ปัญหาจุกจิก
+                    ก้าวไปข้างหน้าได้อย่างมั่นคง
                 </p>
-                <a href="#contact" class="btn btn-primary">ปรึกษาผู้เชี่ยวชาญ</a>
-                <a href="#solution" class="btn btn-outline" style="margin-left: 1rem;">ดูบริการทั้งหมด</a>
+                <div class="hero-cta fade-in-up"
+                    style="animation-delay: 0.3s; display: flex; gap: 1rem; align-items: center;">
+                    <a href="contact.html" class="btn btn-primary"
+                        style="padding: 1rem 3rem; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(220, 38, 38, 0.2);">ติดต่อเรา</a>
+                    <a href="service.html"
+                        style="color: #4b5563; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s;">
+                        ดูรายละเอียดบริการ <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
+            <!-- Shape is handled by CSS -->
             <div class="hero-shape"></div>
         </div>
     </section>
 
-    <!-- Profile Section -->
-    <section id="profile" class="section bg-off-white">
+    <!-- Why Choose Us (New Unique Content) -->
+    <section class="why-us-section">
         <div class="container">
             <div class="text-center" style="margin-bottom: 4rem;">
-                <h2 class="text-red">เกี่ยวกับเรา</h2>
-                <p>ความมุ่งมั่นและวิสัยทัศน์ในการให้บริการ</p>
+                <h2 class="text-red">ทำไมต้องเลือกเรา?</h2>
+                <p>มาตรฐานการทำงานที่สร้างความแตกต่างให้กับธุรกิจของคุณ</p>
             </div>
-
-            <div class="profile-grid">
-                <div class="profile-card">
-                    <i class="fas fa-history solution-icon"></i>
-                    <h3>ประวัติความเป็นมา</h3>
-                    <p>ก่อตั้งขึ้นด้วยความมุ่งมั่นที่จะเป็นผู้นำด้านการให้บริการดูแลระบบคอมพิวเตอร์และเครือข่ายแบบครบวงจร
-                        ด้วยประสบการณ์กว่า 10 ปีในวงการไอที เราได้รับความไว้วางใจจากองค์กรชั้นนำมากมาย</p>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <i class="fas fa-bolt feature-icon"></i>
+                    <h3>Fast Response</h3>
+                    <p>การันตีการตอบกลับที่รวดเร็ว แก้ไขปัญหาทันท่วงที เพราะเรารู้ว่าเวลาของธุรกิจมีค่า ทีมงานพร้อม
+                        Support ทั้ง Remote และ Onsite</p>
                 </div>
-                <div class="profile-card">
-                    <i class="fas fa-bullseye solution-icon"></i>
-                    <h3>วิสัยทัศน์ (Vision)</h3>
-                    <p>มุ่งสู่การเป็นพันธมิตรทางธุรกิจด้านไอทีที่น่าเชื่อถือที่สุด (Trusted IT Partner)
-                        โดยเน้นการให้บริการที่รวดเร็ว แม่นยำ และตอบโจทย์ความต้องการของลูกค้าในยุคดิจิทัล</p>
+                <div class="feature-box">
+                    <i class="fas fa-user-shield feature-icon"></i>
+                    <h3>Certified Experts</h3>
+                    <p>ดูแลโดยทีมงานวิศวกรที่มีใบรับรอง Certificate และประสบการณ์จริงกว่า 10 ปี
+                        มั่นใจได้ในความเป็นมืออาชีพ</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3>Cost Efficiency</h3>
+                    <p>ช่วยวางแผนงบประมาณด้านไอทีให้คุ้มค่าที่สุด ลดค่าใช้จ่ายแอบแฝง และป้องกันการลงทุนที่ไม่จำเป็น</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section id="solution" class="section">
+    <!-- Our Workflow (New Unique Content) -->
+    <section class="workflow-section">
         <div class="container">
-            <div class="text-center" style="margin-bottom: 4rem;">
-                <h2 class="text-red">โซลูชั่นและบริการ</h2>
-                <p>บริการด้านไอทีครบวงจรเพื่อธุรกิจของคุณ</p>
+            <div class="text-center">
+                <h2>ขั้นตอนการทำงานของเรา</h2>
+                <p style="color: #666;">กระบวนการที่เป็นระบบ เพื่อผลลัพธ์ที่ดีที่สุด</p>
             </div>
 
+            <div class="workflow-steps">
+                <!-- Step 1 -->
+                <div class="step-item fade-in-scroll">
+                    <div class="step-circle"><i class="fas fa-search"></i></div>
+                    <div class="step-title">1. Audit & Consult</div>
+                    <div class="step-desc">เข้าสำรวจหน้างาน ตรวจสอบระบบเดิม และให้คำปรึกษาเบื้องต้น</div>
+                </div>
+                <!-- Step 2 -->
+                <div class="step-item fade-in-scroll">
+                    <div class="step-circle"><i class="fas fa-pencil-ruler"></i></div>
+                    <div class="step-title">2. Plan & Design</div>
+                    <div class="step-desc">ออกแบบโซลูชั่นและวางแผนการดำเนินงานให้เหมาะสมกับงบประมาณ</div>
+                </div>
+                <!-- Step 3 -->
+                <div class="step-item fade-in-scroll">
+                    <div class="step-circle"><i class="fas fa-cogs"></i></div>
+                    <div class="step-title">3. Implement</div>
+                    <div class="step-desc">ติดตั้งและตั้งค่าระบบโดยทีมงานมืออาชีพ พร้อมทดสอบการใช้งาน</div>
+                </div>
+                <!-- Step 4 -->
+                <div class="step-item fade-in-scroll">
+                    <div class="step-circle"><i class="fas fa-headset"></i></div>
+                    <div class="step-title">4. Support</div>
+                    <div class="step-desc">ดูแลหลังการขาย ตรวจเช็คระบบ และพร้อมแก้ไขปัญหาตลอดอายุสัญญา</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Teaser (Links to Service Page) -->
+    <section class="section" style="background: #fff;">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <h2>บริการที่ครอบคลุม</h2>
+                <p>One-Stop Service สำหรับทุกความต้องการด้านไอที</p>
+            </div>
             <div class="solutions-grid">
+                <!-- Just Teasers, click to see full page -->
                 <div class="solution-card">
-                    <i class="fas fa-headset solution-icon"></i>
-                    <h3>IT Support & Helpdesk</h3>
-                    <p>บริการดูแลและแก้ไขปัญหาคอมพิวเตอร์ทั้ง Hardware และ Software
-                        พร้อมทีมงาน Support ที่พร้อมให้บริการทั้ง On-site และ Remote</p>
-                </div>
-                <div class="solution-card">
-                    <i class="fas fa-network-wired solution-icon"></i>
-                    <h3>Network & Infrastructure</h3>
-                    <p>ออกแบบ ติดตั้ง และดูแลระบบเครือข่าย (Network) และ Server
-                        เพื่อให้การเชื่อมต่อและจัดเก็บข้อมูลขององค์กรมีความเสถียรและปลอดภัย</p>
-                </div>
-                <div class="solution-card">
-                    <i class="fas fa-shield-virus solution-icon"></i>
-                    <h3>Security & Antivirus</h3>
-                    <p>โซลูชั่นด้านความปลอดภัยข้อมูล ป้องกันไวรัส มัลแวร์ และภัยคุกคามทางไซเบอร์
-                        ด้วยซอฟต์แวร์ลิขสิทธิ์แท้มาตรฐานสากล</p>
+                    <i class="fas fa-users-cog solution-icon"></i>
+                    <h3>IT Outsource</h3>
+                    <p>บริการดูแลระบบคอมพิวเตอร์รายเดือน/รายปี ช่วยลดต้นทุนในการจ้างพนักงานประจำ</p>
                 </div>
                 <div class="solution-card">
                     <i class="fas fa-server solution-icon"></i>
-                    <h3>Backup & Recovery</h3>
-                    <p>บริการสำรองข้อมูลด่วนและกู้คืนข้อมูล เพื่อป้องกันการสูญหายของข้อมูลสำคัญทางธุรกิจ
-                        รองรับทั้งระบบ Cloud และ Local Storage</p>
+                    <h3>Infrastructure</h3>
+                    <p>วางระบบ Server, Network และ WiFi ให้ครอบคลุมและเสถียร</p>
                 </div>
                 <div class="solution-card">
-                    <i class="fas fa-laptop-code solution-icon"></i>
-                    <h3>IT Consultant</h3>
-                    <p>ให้คำปรึกษาด้านการวางระบบไอที การจัดซื้ออุปกรณ์ และการวางแผนงบประมาณด้านไอที
-                        เพื่อให้เกิดความคุ้มค่าสูงสุด</p>
+                    <i class="fas fa-shield-alt solution-icon"></i>
+                    <h3>Cyber Security</h3>
+                    <p>ปกป้องข้อมูลสำคัญขององค์กรจากภัยคุกคาม และสำรองข้อมูลอย่างถูกวิธี</p>
                 </div>
                 <div class="solution-card">
-                    <i class="fas fa-cogs solution-icon"></i>
-                    <h3>System Maintenance</h3>
-                    <p>บริการบำรุงรักษาเชิงป้องกัน (PM) ตรวจเช็คสุขภาพของอุปกรณ์ประจำเดือน/ไตรมาส
-                        เพื่อลดโอกาสเกิดปัญหาในระยะยาว</p>
+                    <i class="fas fa-laptop solution-icon"></i>
+                    <h3>Hardware Sales</h3>
+                    <p>จำหน่ายอุปกรณ์ไอทีทุกชนิด คอมพิวเตอร์ ปริ้นเตอร์ ในราคาพิเศษ</p>
                 </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="service.html" class="btn btn-outline">ดูรายละเอียดบริการทั้งหมด <i
+                        class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="section bg-off-white">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 4rem;">
-                <h2 class="text-red">ผลงานและการปฏิบัติงาน</h2>
-                <p>ภาพบรรยากาศการให้บริการแก่ลูกค้าของเรา</p>
+    <!-- Client Teaser (Links to Customer Page) -->
+    <section class="section bg-off-white">
+        <div class="container text-center">
+            <h2 class="text-red">ลูกค้าที่ไว้วางใจเรา</h2>
+            <p style="margin-bottom: 3rem;">ส่วนหนึ่งของความสำเร็จที่เราภาคภูมิใจ</p>
+
+            <!-- Small logo strip -->
+            <div
+                style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; opacity: 0.7; margin-bottom: 2rem;">
+                <img src="client-1.jpg" alt="Partner" style="height: 50px; filter: grayscale(100%);">
+                <img src="client-2.png" alt="Partner" style="height: 50px; filter: grayscale(100%);">
+                <img src="client-3.png" alt="Partner" style="height: 50px; filter: grayscale(100%);">
+                <img src="client-4.png" alt="Partner" style="height: 50px; filter: grayscale(100%);">
             </div>
 
-            <!-- Slider Gallery -->
-            <div class="gallery-container">
-                <div class="gallery-slider">
-                    <div class="gallery-slide fade-in-slide">
-                        <img src="gallery-1.jpg" alt="Gallery Image 1">
-                        <div class="gallery-overlay">
-                            <h4>บรรยากาศการทำงาน</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-slide fade-in-slide">
-                        <img src="gallery-2.jpg" alt="Gallery Image 2">
-                        <div class="gallery-overlay">
-                            <h4>การติดตั้งระบบ</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-slide fade-in-slide">
-                        <img src="gallery-3.jpg" alt="Gallery Image 3">
-                        <div class="gallery-overlay">
-                            <h4>ทีมงานมืออาชีพ</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-slide fade-in-slide">
-                        <img src="gallery-4.jpg" alt="Gallery Image 4">
-                        <div class="gallery-overlay">
-                            <h4>การซ่อมบำรุง</h4>
-                        </div>
-                    </div>
-                </div>
-                <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                <div class="slider-dots"></div>
-            </div>
-            <div class="text-center" style="margin-top: 2rem;">
-                <a href="gallery.html" class="btn btn-outline">ดูเพิ่มเติม <i class="fas fa-arrow-right"></i></a>
-            </div>
+            <a href="customer.html" class="btn btn-outline">ดูรายชื่อลูกค้าทั้งหมด</a>
         </div>
     </section>
 
-    <!-- Customer Section -->
-    <section id="customer" class="section">
+    <!-- CTA Strip -->
+    <section class="cta-strip">
         <div class="container">
-            <div class="text-center" style="margin-bottom: 4rem;">
-                <h2 class="text-red">ลูกค้าของเรา</h2>
-                <p>องค์กรชั้นนำที่ไว้วางใจในบริการ</p>
-            </div>
-
-            <!-- Auto-scrolling Logo Marquee -->
-            <div class="customer-marquee">
-                <div class="marquee-content">
-                    <img src="client-1.jpg" alt="Client 1" class="customer-logo-img">
-                    <img src="client-2.png" alt="Client 2" class="customer-logo-img">
-                    <img src="client-3.png" alt="Client 3" class="customer-logo-img">
-                    <img src="client-4.png" alt="Client 4" class="customer-logo-img">
-                    <img src="client-5.png" alt="Client 5" class="customer-logo-img">
-                    <img src="client-6.png" alt="Client 6" class="customer-logo-img">
-                    <img src="client-7.png" alt="Client 7" class="customer-logo-img">
-                    <img src="client-8.jpg" alt="Client 8" class="customer-logo-img">
-                    <!-- Duplicate for seamless scroll -->
-                    <img src="client-1.jpg" alt="Client 1" class="customer-logo-img">
-                    <img src="client-2.png" alt="Client 2" class="customer-logo-img">
-                    <img src="client-3.png" alt="Client 3" class="customer-logo-img">
-                    <img src="client-4.png" alt="Client 4" class="customer-logo-img">
-                    <img src="client-5.png" alt="Client 5" class="customer-logo-img">
-                    <img src="client-6.png" alt="Client 6" class="customer-logo-img">
-                    <img src="client-7.png" alt="Client 7" class="customer-logo-img">
-                    <img src="client-8.jpg" alt="Client 8" class="customer-logo-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section bg-off-white">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 4rem;">
-                <h2 class="text-red">ติดต่อเรา</h2>
-                <p>ปรึกษาปัญหาไอที หรือสอบถามข้อมูลเพิ่มเติม</p>
-            </div>
-
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <h4>ที่อยู่สำนักงาน</h4>
-                            <p>259/3 หมู่บ้านแฮมป์ตัน พาร์ค 3 หมู่ที่ 11<br>ตำบลทุ่งสุขลา อำเภอศรีราชา จ.ชลบุรี 20230
-                            </p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div>
-                            <h4>เบอร์โทรศัพท์</h4>
-                            <p>087-746-9070</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <h4>อีเมล</h4>
-                            <p>Chiaochanit@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="contact-form" action="https://formsubmit.co/sawit.yeamsuk@gmail.com" method="POST">
-                    <h3 style="margin-bottom: 1.5rem;">ส่งข้อความถึงเรา</h3>
-                    <!-- Formsubmit Configuration -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="New Contact from Website!">
-                    <!-- Removed _next to show activation screen -->
-                    <input type="hidden" name="_autoresponse"
-                        value="ขอบคุณที่ติดต่อเรา เราได้รับข้อความของคุณแล้วและจะติดต่อกลับโดยเร็วที่สุด">
-
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="ชื่อ-นามสกุล หรือ ชื่อบริษัท"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="อีเมลติดต่อกลับ" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="phone" class="form-control" placeholder="เบอร์โทรศัพท์">
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" class="form-control" rows="5" placeholder="รายละเอียดที่ต้องการสอบถาม"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">ส่งข้อความ</button>
-                    <p style="font-size: 0.8rem; margin-top: 1rem; color: #6b7280; text-align: center;">*
-                        ข้อมูลจะถูกส่งไปยังอีเมลเจ้าหน้าที่โดยตรง</p>
-                </form>
-            </div>
+            <h2 style="margin-bottom: 1rem;">พร้อมยกระดับธุรกิจของคุณหรือยัง?</h2>
+            <p style="color: #9ca3af; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                อย่าปล่อยให้ปัญหาไอทีฉุดรั้งการเติบโตของคุณ ให้ผู้เชี่ยวชาญดูแลระบบ
+                เพื่อให้คุณโฟกัสกับธุรกิจหลักได้อย่างเต็มที่
+            </p>
+            <a href="contact.html" class="btn btn-primary"
+                style="background: var(--primary-red); border-color: var(--primary-red);">ติดต่อสอบถามทันที</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h4>CHIAOCHANIT SOLUTION</h4>
-                    <p style="color: #9ca3af;">บริษัท เชี่ยวชาญไอที โซลูชั่น จำกัด<br>ผู้ให้บริการ IT Outsource
-                        ครบวงจร<br>มาตรฐานระดับมืออาชีพ</p>
-                </div>
-                <div class="footer-col">
-                    <h4>เมนูลัด</h4>
-                    <ul class="footer-links">
-                        <li><a href="#main">หน้าหลัก</a></li>
-                        <li><a href="#profile">เกี่ยวกับเรา</a></li>
-                        <li><a href="#solution">บริการของเรา</a></li>
-                        <li><a href="#contact">ติดต่อเรา</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>บริการ</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">IT Support</a></li>
-                        <li><a href="#">Network Solution</a></li>
-                        <li><a href="#">Security</a></li>
-                        <li><a href="#">Consultant</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
+            <div class="text-center">
                 <p>&copy; 2024 Chiaochanit Solution Co., Ltd. All Rights Reserved.</p>
             </div>
         </div>

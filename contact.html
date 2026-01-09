@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อเรา | บริษัท เชี่ยวชาญไอที โซลูชั่น จำกัด</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Specific Styles for Contact Page */
+        .page-header {
+            padding: 100px 0 30px;
+            /* Reduced padding */
+            background: #f9fafb;
+            /* Removed heavy gradient */
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            /* Reduced from global 3.5rem */
+            margin-bottom: 0.5rem;
+        }
+
+        .map-section {
+            padding: 0;
+            height: 400px;
+            width: 100%;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .name-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .name-card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .name-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .card-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin-right: 1.5rem;
+            object-fit: cover;
+            flex-shrink: 0;
+            /* Placeholder styling */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 2rem;
+        }
+
+        .card-info h3 {
+            color: var(--primary-red);
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-info p {
+            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .card-contact {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .card-contact i {
+            color: var(--primary-red);
+            width: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Chiaochanit Solution Logo" class="logo-img">
+                    <span class="logo-text">CHIAOCHANIT SOLUTION</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">หน้าหลัก</a></li>
+                    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+                    <li><a href="service.html">บริการของเรา</a></li>
+                    <li><a href="gallery.html">ผลงานและการปฏิบัติงาน</a></li>
+                    <li><a href="customer.html">ลูกค้าของเรา</a></li>
+                    <li><a href="contact.html" class="active">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="text-red">ติดต่อเรา</h1>
+            <p>พร้อมให้คำปรึกษาและบริการด้านไอทีครบวงจร</p>
+        </div>
+    </div>
+
+    <!-- Contact Content Section -->
+    <section class="section">
+        <div class="container">
+
+            <!-- Name Cards -->
+            <div class="text-center" style="margin-bottom: 2rem;">
+                <h3 style="color: var(--text-primary);">ผู้บริหาร</h3>
+            </div>
+            <div class="name-card-grid">
+                <!-- Person 1 -->
+                <div class="name-card">
+                    <img src="logo.jpg" alt="Chayaphon Yimsamoe" class="card-avatar"
+                        style="padding:0; background:white;">
+                    <div class="card-info">
+                        <h3>คุณชยพล ยิ้มเสมอ</h3>
+                        <p style="font-size: 0.9rem; color: #666;">(Chayaphon Yimsamoe)</p>
+                        <p style="font-weight: 600; color: var(--primary-red); margin-top: 0.5rem;">General Manager</p>
+                        <div class="card-contact" style="margin-top: 0.5rem;">
+                            <i class="fas fa-phone-alt"></i> 087-746-9070
+                        </div>
+                    </div>
+                </div>
+                <!-- Person 2 -->
+                <div class="name-card">
+                    <img src="logo.jpg" alt="Phimmada Pluengchaiyo" class="card-avatar"
+                        style="padding:0; background:white;">
+                    <div class="card-info">
+                        <h3>คุณพิมพ์มาดา เปลืองไชโย</h3>
+                        <p style="font-size: 0.9rem; color: #666;">(Phimmada Pluengchaiyo)</p>
+                        <p style="font-weight: 600; color: var(--primary-red); margin-top: 0.5rem;">President</p>
+                        <div class="card-contact" style="margin-top: 0.5rem;">
+                            <i class="fas fa-phone-alt"></i> 083-110-8398
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 4rem;">
+
+            <!-- Main Contact Info & Form (Copied structure) -->
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-red);">ข้อมูลการติดต่อ</h3>
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>ที่อยู่สำนักงาน</h4>
+                            <p>279/3 หมู่บ้านแฮมป์ตัน พาร์ค 3 หมู่ที่ 11<br>ตำบลทุ่งสุขลา อำเภอศรีราชา จ.ชลบุรี 20230
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h4>เบอร์โทรศัพท์</h4>
+                            <p>087-746-9070</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>อีเมล</h4>
+                            <p>Chiaochanit@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Map Moved Here (Bottom of Info Column) -->
+                    <div style="margin-top: 2rem; border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow-md);">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9895617580073!2d100.93696957507873!3d13.09984768722745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102b941b3c3676b%3A0xae533388fedec14c!2z4Lia4Lij4Li04Lip4Lix4LiX4LmA4LiK4Li14LmI4Lii4Lin4LiK4Liy4LiN4LmE4Lit4LiX4Li14LmC4LiL4Lil4Li54LiK4Lix4LmI4LiZ4LiI4Liz4LiB4Lix4LiUICjguKrguLPguJnguLHguIfguLLguJnguYPguKvguI3guYgp!5e0!3m2!1sth!2sth!4v1767947446307!5m2!1sth!2sth"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://formsubmit.co/sawit.yeamsuk@gmail.com" method="POST">
+                    <h3 style="margin-bottom: 1.5rem;">แบบฟอร์มติดต่อกลับ</h3>
+                    <!-- Formsubmit Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Contact from Website (Contact Page)!">
+                    <input type="hidden" name="_autoresponse"
+                        value="ขอบคุณที่ติดต่อเรา เราได้รับข้อความของคุณแล้วและจะติดต่อกลับโดยเร็วที่สุด">
+
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="ชื่อ-นามสกุล หรือ ชื่อบริษัท"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="อีเมลติดต่อกลับ" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="เบอร์โทรศัพท์">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" rows="5" placeholder="รายละเอียดที่ต้องการสอบถาม"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">ส่งข้อความ</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Simplified) -->
+    <footer>
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 Chiaochanit Solution Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

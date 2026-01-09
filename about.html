@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เกี่ยวกับเรา | บริษัท เชี่ยวชาญไอที โซลูชั่น จำกัด</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Modern About Page Styles */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        }
+
+        /* Hero Section */
+        .about-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .about-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #d1d5db;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 6rem 0;
+            background: #fff;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .story-content h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .story-content p {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .story-image {
+            position: relative;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .exp-badge {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--primary-red);
+            color: white;
+            padding: 2rem;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .exp-badge span {
+            font-weight: 800;
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .exp-badge small {
+            font-size: 0.9rem;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Vision & Core Values */
+        .values-section {
+            padding: 6rem 0;
+            background: #f9fafb;
+            position: relative;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid transparent;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            border-bottom-color: var(--primary-red);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #fee2e2 0%, #fff 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            color: var(--primary-red);
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .value-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* CTA Bar */
+        .cta-bar {
+            background: var(--primary-gradient);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-btn {
+            background: white;
+            color: var(--primary-red);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: #f9fafb;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .exp-badge {
+                right: 0;
+                bottom: -20px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Chiaochanit Solution Logo" class="logo-img">
+                    <span class="logo-text">CHIAOCHANIT SOLUTION</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">หน้าหลัก</a></li>
+                    <li><a href="about.html" class="active">เกี่ยวกับเรา</a></li>
+                    <li><a href="service.html">บริการของเรา</a></li>
+                    <li><a href="gallery.html">ผลงานและการปฏิบัติงาน</a></li>
+                    <li><a href="customer.html">ลูกค้าของเรา</a></li>
+                    <li><a href="contact.html">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="about-hero">
+        <div class="container">
+            <h1>Your Trusted IT Partner</h1>
+            <p>เราไม่ได้เป็นเพียงผู้ให้บริการ
+                แต่เป็นพันธมิตรที่พร้อมขับเคลื่อนธุรกิจของคุณให้ก้าวหน้าด้วยเทคโนโลยีที่ทันสมัยและมั่นคง</p>
+        </div>
+    </div>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image">
+                    <!-- Placeholder image matching office/tech vibe -->
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Office Environment">
+                    <div class="exp-badge">
+                        <span>10+</span>
+                        <small>Years Exp.</small>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <h2>ประวัติความเป็นมา</h2>
+                    <p><strong>บริษัท เชี่ยวชาญไอที โซลูชั่น จำกัด</strong>
+                        ก่อตั้งขึ้นด้วยความมุ่งมั่นที่จะเป็นผู้นำด้านการให้บริการดูแลระบบคอมพิวเตอร์และเครือข่ายแบบครบวงจร
+                    </p>
+                    <p>ตลอดระยะเวลากว่า 10 ปี
+                        เราได้สั่งสมประสบการณ์และความเชี่ยวชาญในการแก้ปัญหาด้านไอทีให้กับองค์กรชั้นนำมากมาย
+                        เริ่มจากการเป็นทีม Support เล็กๆ
+                        สู่การเป็นบริษัทที่ให้บริการแบบมืออาชีพที่ได้รับความไว้วางใจจากลูกค้า
+                        ทั้งในนิคมอุตสาหกรรมและบริษัทเอกชนต่างๆ</p>
+                    <p>เราเชื่อมั่นเสมอว่า "ระบบไอทีที่ดี คือรากฐานของธุรกิจที่ประสบความสำเร็จ"
+                        เราจึงไม่หยุดนิ่งที่จะพัฒนาทีมงานและเทคโนโลยี เพื่อส่งมอบบริการที่ดีที่สุดให้กับคุณ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Values -->
+    <section class="values-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 style="font-size: 2.5rem; font-weight: 800; color: #111827; margin-bottom: 1rem;">ค่านิยมองค์กร
+                    (Core Values)</h2>
+                <p style="color: #6b7280; max-width: 600px; margin: 0 auto;">
+                    หัวใจสำคัญที่ขับเคลื่อนการทำงานของเราเพื่อผลลัพธ์ที่เป็นเลิศ</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>วิสัยทัศน์ (Vision)</h3>
+                    <p>มุ่งสู่การเป็นพันธมิตรทางธุรกิจด้านไอทีที่น่าเชื่อถือที่สุด (Most Trusted IT Partner)
+                        โดยเน้นการให้บริการที่รวดเร็ว แม่นยำ และตอบโจทย์ความต้องการของลูกค้าในยุคดิจิทัลอย่างแท้จริง</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>ความซื่อสัตย์ (Integrity)</h3>
+                    <p>เรายึดมั่นในความโปร่งใสและจริงใจต่อลูกค้า ให้คำปรึกษาอย่างตรงไปตรงมา
+                        และดูแลรักษาข้อมูลความลับของลูกค้าเสมือนเป็นข้อมูลของเราเอง</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>ความเป็นมืออาชีพ (Expertise)</h3>
+                    <p>ทีมงานของเราได้รับการฝึกอบรมและพัฒนาทักษะอยู่เสมอ
+                        เพื่อให้มั่นใจว่าสามารถแก้ไขปัญหาและนำเสนอโซลูชั่นที่ทันสมัยและมีประสิทธิภาพสูงสุด</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-bar">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">พร้อมที่จะยกระดับระบบไอทีของคุณหรือยัง?</h2>
+            <p style="font-size: 1.1rem; opacity: 0.9;">ให้เราดูแลเรื่อง Tech เพื่อให้คุณโฟกัสกับ Business
+                ได้อย่างเต็มที่</p>
+            <a href="contact.html" class="cta-btn">ติดต่อเราวันนี้ <i class="fas fa-arrow-right"
+                    style="margin-left: 5px;"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer (Simplified) -->
+    <footer>
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 Chiaochanit Solution Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

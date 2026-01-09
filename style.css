@@ -242,29 +242,54 @@ header.scrolled .logo-img {
     overflow: hidden;
 }
 
+/* Hero Section - Full Screen Revamp */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 0 60px;
+    /* Account for fixed header */
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    overflow: hidden;
+}
+
 .hero-content {
     position: relative;
     z-index: 10;
-    max-width: 700px;
-    /* Increased width slightly */
-    padding: 2rem;
-    /* Added padding */
-    background: rgba(255, 255, 255, 0.7);
-    /* Glass effect */
-    backdrop-filter: blur(5px);
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid var(--primary-red);
+    max-width: 800px;
+    /* Increased from 700px */
+    padding: 0;
+    /* Removed card styles for cleaner "Full" look */
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    box-shadow: none;
+    border-left: none;
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: 4.5rem;
+    /* Larger title */
+    font-weight: 800;
     margin-bottom: 1.5rem;
     line-height: 1.1;
-    background: linear-gradient(45deg, var(--primary-red), var(--dark-red));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
+    background: none;
+    -webkit-text-fill-color: initial;
+}
+
+.hero-shape {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.1) 100%);
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 1;
+    display: block;
+    /* Show shape again */
 }
 
 .hero-shape {
