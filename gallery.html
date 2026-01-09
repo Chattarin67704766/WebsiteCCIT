@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลงานของเรา | บริษัท เชี่ยวชาญไอที โซลูชั่น จำกัด</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Specific Styles for Gallery Page */
+        .page-header {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+            text-align: center;
+        }
+
+        .project-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .project-header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title h3 {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .album-item {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            height: 250px;
+        }
+
+        .album-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .album-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Same as Index) -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Chiaochanit Solution Logo" class="logo-img">
+                    <span class="logo-text">CHIAOCHANIT SOLUTION</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">หน้าหลัก</a></li>
+                    <li><a href="index.html#profile">เกี่ยวกับเรา</a></li>
+                    <li><a href="index.html#solution">บริการของเรา</a></li>
+                    <li><a href="gallery.html">ผลงานและการปฏิบัติงาน</a></li>
+                    <li><a href="index.html#customer">ลูกค้าของเรา</a></li>
+                    <li><a href="index.html#contact">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="text-red">ผลงานของเรา</h1>
+            <p>รวมภาพความประทับใจและความสำเร็จจากโครงการต่างๆ ที่เราได้รับความไว้วางใจ</p>
+        </div>
+    </div>
+
+    <!-- Project 1 -->
+    <section class="project-section">
+        <div class="container">
+            <div class="project-header">
+                <div class="project-title">
+                    <h3>ติดตั้งระบบ Server และ Network</h3>
+                    <p>โครงการปรับปรุงระบบห้อง Data Center และเดินสายสัญญาณใหม่ทั้งอาคาร</p>
+                </div>
+                <div class="project-date"><i class="far fa-calendar-alt"></i> สิงหาคม 2566</div>
+            </div>
+            <div class="album-grid">
+                <div class="album-item"><img src="gallery-1.jpg" alt="Server Install 1"></div>
+                <div class="album-item"><img src="gallery-2.jpg" alt="Server Install 2"></div>
+                <div class="album-item"><img src="gallery-3.jpg" alt="Server Install 3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project 2 -->
+    <section class="project-section bg-off-white">
+        <div class="container">
+            <div class="project-header">
+                <div class="project-title">
+                    <h3>บริการบำรุงรักษาคอมพิวเตอร์ (IT Outsourcing)</h3>
+                    <p>ดูแลตรวจเช็คสภาพเครื่องคอมพิวเตอร์ประจำปีให้กับสำนักงานลูกค้า</p>
+                </div>
+                <div class="project-date"><i class="far fa-calendar-alt"></i> ตลอดสัญญาปี 2566-2567</div>
+            </div>
+            <div class="album-grid">
+                <div class="album-item"><img src="gallery-4.jpg" alt="Maintenance 1"></div>
+                <div class="album-item"><img src="gallery-1.jpg" alt="Maintenance 2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Simplified) -->
+    <footer>
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 Chiaochanit Solution Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple minimal script for header logic if needed, or just reuse
+        // For now, no special JS needed beyond simple links
+    </script>
+</body>
+
+</html>
