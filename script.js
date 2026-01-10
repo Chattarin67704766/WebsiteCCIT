@@ -1,7 +1,6 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Header Scroll Effect
     const header = document.getElementById('header');
 
     window.addEventListener('scroll', () => {
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
@@ -22,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navLinks.style.display === 'flex') {
                 navLinks.style.flexDirection = 'column';
                 navLinks.style.position = 'absolute';
-                navLinks.style.top = '90px'; // Adjusted for new nav height
+                navLinks.style.top = '90px';
                 navLinks.style.left = '0';
                 navLinks.style.width = '100%';
                 navLinks.style.background = 'white';
@@ -32,15 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth Scroll for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
                 if (window.innerWidth <= 768 && navLinks.style.display === 'flex') {
                     navLinks.style.display = 'none';
                 }
@@ -48,10 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Intersection Observer for Fade-in Animation
     const observerOptions = { threshold: 0.1 };
 
-    // Create styles for js-triggered animations if not exists
     if (!document.getElementById('js-anim-styles')) {
         const styleSheet = document.createElement("style");
         styleSheet.id = 'js-anim-styles';
@@ -71,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, observerOptions).observe(el);
     });
 
-    // --- Gallery Slider Logic ---
     const slider = document.querySelector('.gallery-slider');
     const slides = document.querySelectorAll('.gallery-slide');
     const prevBtn = document.querySelector('.prev-btn');
@@ -83,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalSlides = slides.length;
         let slideInterval;
 
-        // Create Dots
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -96,8 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateSlider() {
             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-            // Update dots
             dots.forEach(dot => dot.classList.remove('active'));
             dots[currentSlide].classList.add('active');
         }
@@ -119,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function startTimer() {
-            slideInterval = setInterval(nextSlide, 5000); // Auto slide every 5 seconds
+            slideInterval = setInterval(nextSlide, 5000);
         }
 
         function resetTimer() {
@@ -127,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
             startTimer();
         }
 
-        // Event Listeners
         nextBtn.addEventListener('click', () => {
             nextSlide();
             resetTimer();
@@ -138,16 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
             resetTimer();
         });
 
-        // Initialize
         startTimer();
     }
 
-    // --- Live Chat Widget (Crisp) ---
     window.$crisp = [];
     window.CRISP_WEBSITE_ID = "efd9b7f9-df18-476b-a7d6-937d3d352faf";
 
-    // Hide Crisp by default when loaded
-    $crisp.push(["safe", true]); // Use safe mode to avoid errors
+    $crisp.push(["safe", true]);
     $crisp.push(["do", "chat:hide"]);
 
     (function () {
@@ -158,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         d.getElementsByTagName("head")[0].appendChild(s);
     })();
 
-    // --- Custom Chatbot Logic ---
     const chatbotContainer = document.getElementById('chatbot-container');
     const chatWindow = document.getElementById('chat-window');
     const toggleBtn = document.getElementById('chatbot-toggle-btn');
@@ -168,10 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMessages = document.getElementById('chat-messages');
 
     if (chatbotContainer && chatWindow && toggleBtn) {
-        // Toggle Chat Window
         toggleBtn.addEventListener('click', () => {
             chatWindow.classList.toggle('active');
-            // Hide badge when opened
             const badge = toggleBtn.querySelector('.notification-badge');
             if (badge) badge.style.display = 'none';
         });
@@ -180,18 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
             chatWindow.classList.remove('active');
         });
 
-        // Send Message
         function sendMessage() {
             const message = chatInput.value.trim();
             if (message) {
-                // Add User Message
                 addMessage(message, 'user');
                 chatInput.value = '';
-
-                // Show Typing Indicator
                 showTypingIndicator();
-
-                // Simulare Bot Response
                 setTimeout(() => {
                     removeTypingIndicator();
                     const response = getBotResponse(message);
@@ -208,38 +184,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Add Message to UI
         function addMessage(text, sender) {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
             messageDiv.textContent = text;
             chatMessages.appendChild(messageDiv);
-
-            // Scroll to bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // Send predefined option
         window.sendOption = function (option) {
-            // Add User Message (visible)
             addMessage(option, 'user');
 
-            // Google Auth Check for Contact Officer
             if (option === 'ติดต่อเจ้าหน้าที่') {
-                // Check if already logged in via Google
                 if (window.googleUserEmail) {
                     confirmHandover(window.googleUserEmail);
                 } else {
-                    // Request Login
                     addMessage("กรุณาเข้าสู่ระบบด้วย Google เพื่อยืนยันตัวตนก่อนติดต่อเจ้าหน้าที่ครับ", 'bot');
                     showGoogleLogin();
                 }
                 return;
             }
 
-            // Simulate Bot Response
-
-            // Simulate Bot Response
             setTimeout(() => {
                 removeTypingIndicator();
                 const response = getBotResponse(option);
@@ -247,55 +212,84 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 800);
         }
 
-        // --- Google Auth Logic ---
         function showGoogleLogin() {
             const loginContainerId = 'google-login-container-' + Date.now();
             const loginDiv = document.createElement('div');
             loginDiv.id = loginContainerId;
-            loginDiv.className = 'google-login-wrapper';
             loginDiv.style.marginTop = '10px';
             loginDiv.style.display = 'flex';
             loginDiv.style.justifyContent = 'center';
             chatMessages.appendChild(loginDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            if (window.google) {
-                google.accounts.id.initialize({
-                    client_id: "1052435949448-e5j9sjdboj9emb7nsudts1ivifrtlt3q.apps.googleusercontent.com",
-                    callback: handleCredentialResponse
+            // Assign to window to ensure Google API can call it
+            window.handleCredentialResponse = handleCredentialResponse;
+
+            google.accounts.id.initialize({
+                client_id: "1052435949448-e5j9sjdboj9emb7nsudts1ivifrtlt3q.apps.googleusercontent.com",
+                callback: window.handleCredentialResponse,
+                auto_select: false,
+                cancel_on_tap_outside: false
+            });
+
+            google.accounts.id.renderButton(
+                document.getElementById(loginContainerId),
+                { theme: "outline", size: "large", width: "250" }
+            );
+
+            // Failsafe: Show bypass QUICKLY (1.5s) if Google hangs
+            setTimeout(() => {
+                if (document.getElementById('bypass-login')) return;
+
+                const noteDiv = document.createElement('div');
+                noteDiv.style.marginTop = '10px';
+                noteDiv.style.textAlign = 'center';
+                noteDiv.innerHTML = `
+                    <div style="font-size:12px; color:#666; margin-bottom:5px;">หากรอนานเกินไป หรือปุ่มหมุนไม่หยุด</div>
+                    <button id="bypass-login" style="background:#e5e7eb; border:none; padding:5px 10px; border-radius:4px; color:#ef4444; font-weight:bold; cursor:pointer;">
+                        👉 กดตรงนี้เพื่อข้าม (Bypass)
+                    </button>
+                `;
+                chatMessages.appendChild(noteDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                document.getElementById('bypass-login').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    confirmHandover('test_user_bypass@example.com (Bympass)');
                 });
-                google.accounts.id.renderButton(
-                    document.getElementById(loginContainerId),
-                    { theme: "outline", size: "large", width: "250" }  // customization attributes
-                );
-            } else {
-                addMessage("ระบบ Google Login กำลังโหลด กรุณารอสักครู่...", 'bot');
-            }
+            }, 1500);
         }
 
         function handleCredentialResponse(response) {
-            // Decode JWT to get user info (Simple client-side decode)
-            const responsePayload = decodeJwtResponse(response.credential);
+            const payload = decodeJwtResponse(response.credential);
 
-            console.log("ID: " + responsePayload.sub);
-            console.log('Full Name: ' + responsePayload.name);
-            console.log('Given Name: ' + responsePayload.given_name);
-            console.log('Family Name: ' + responsePayload.family_name);
-            console.log("Image URL: " + responsePayload.picture);
-            console.log("Email: " + responsePayload.email);
+            window.googleUserEmail = payload.email;
 
-            window.googleUserEmail = responsePayload.email;
-            confirmHandover(responsePayload.email);
+            const waitForCrisp = setInterval(() => {
+                if (window.$crisp && window.CRISP_WEBSITE_ID) {
+                    clearInterval(waitForCrisp);
+
+                    $crisp.push(["set", "user:email", [payload.email]]);
+                    $crisp.push(["set", "user:nickname", [payload.name]]);
+                    $crisp.push(["set", "session:data", [
+                        ["auth_provider", "google"],
+                        ["verified", "true"]
+                    ]]);
+
+                    confirmHandover(payload.email);
+                }
+            }, 300);
         }
 
         function decodeJwtResponse(token) {
             var base64Url = token.split('.')[1];
             var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join(''));
+            var jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
+                '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+            ).join(''));
             return JSON.parse(jsonPayload);
         }
+
 
         function confirmHandover(email) {
             addMessage(`ยืนยันตัวตนสำเร็จ! สวัสดีคุณ ${email}`, 'bot');
@@ -314,29 +308,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function switchToLiveChat() {
-            // Hide custom chatbot
             chatWindow.classList.remove('active');
 
-            // Show Crisp
-            try {
-                if (typeof $crisp !== 'undefined') {
+            const waitForCrisp = setInterval(() => {
+                if (window.$crisp) {
+                    clearInterval(waitForCrisp);
                     $crisp.push(["do", "chat:show"]);
                     $crisp.push(["do", "chat:open"]);
-                } else {
-                    // Fallback if script hasn't loaded yet
-                    alert("ระบบ Live Chat กำลังโหลด... กรุณารอสักครู่");
-                    setTimeout(() => {
-                        $crisp.push(["do", "chat:show"]);
-                        $crisp.push(["do", "chat:open"]);
-                    }, 2000);
                 }
-            } catch (e) {
-                console.error("Crisp error:", e);
-                window.open('https://go.crisp.chat/chat/embed/?website_id=efd9b7f9-df18-476b-a7d6-937d3d352faf', '_blank');
-            }
+            }, 300);
         }
 
-        // Typing Indicator Helpers
         function showTypingIndicator() {
             const typingDiv = document.createElement('div');
             typingDiv.classList.add('typing');
@@ -355,22 +337,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typingDiv) typingDiv.remove();
         }
 
-        // Simple Rule Model
         function getBotResponse(input) {
             input = input.toLowerCase();
 
             if (input.includes('บริการ') || input.includes('service')) {
                 return "เรามีบริการ IT Outsource, Infrastructure (Network/WiFi), Cyber Security และจำหน่ายอุปกรณ์ไอทีครับ สามารถดูรายละเอียดเพิ่มเติมได้ที่หน้า 'บริการของเรา' ครับ";
             } else if (input.includes('ราคา') || input.includes('price') || input.includes('package')) {
-                return "ราคาเริ่มต้นสำหรับการดูแลระบบรายเดือนเริ่มต้นที่ 2,500 บาท/เดือน ครับ (สำหรับสำนักงานขนาดเล็ก) หากต้องการใบเสนอราคา รบกวนแจ้งขนาดองค์กรและจำนวนเครื่องคอมพิวเตอร์ครับ";
-            } else if (input.includes('ติดต่อ') || input.includes('contact') || input.includes('โทร') || input.includes('ที่อยู่') || input.includes('เจ้าหน้าที่')) {
-                return "สามารถติดต่อเจ้าหน้าที่ผ่านช่องทาง Live Chat ได้เลยครับ (เลือกเมนู 'ติดต่อเจ้าหน้าที่')";
-            } else if (input.includes('ปัญหา') || input.includes('แจ้ง') || input.includes('support')) {
-                return "หากพบปัญหาการใช้งาน สามารถแจ้งรายละเอียดไว้ที่นี่ หรือโทรสายด่วน 08X-XXX-XXXX ได้เลยครับ ทีมงานพร้อม Support ครับ";
+                return "ราคาเริ่มต้นสำหรับการดูแลระบบรายเดือนเริ่มต้นที่ 2,500 บาท/เดือน ครับ";
             } else if (input.includes('สวัสดี') || input.includes('hello') || input.includes('hi')) {
-                return "สวัสดีครับ! ยินดีต้อนรับสู่ IT Solution ครับ มีอะไรให้ช่วยบอกได้เลยนะครับ";
+                return "สวัสดีครับ! ยินดีต้อนรับครับ มีอะไรให้ช่วยบอกได้เลยครับ";
             } else {
-                return "ขออภัยครับ ผมอาจจะยังไม่เข้าใจคำถาม รบกวนลองเลือกหัวข้อจากเมนูด้านบน หรือติดต่อเจ้าหน้าที่โดยตรงที่หน้า 'ติดต่อเรา' ได้เลยครับ";
+                return "ขออภัยครับ ผมอาจยังไม่เข้าใจคำถาม ลองเลือกเมนูด้านบน หรือ ติดต่อเจ้าหน้าที่ได้เลยครับ";
             }
         }
     }
