@@ -142,14 +142,236 @@ document.addEventListener('DOMContentLoaded', () => {
         startTimer();
     }
 
-    // --- Live Chat Widget (Tawk.to) ---
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    // --- Live Chat Widget (Crisp) ---
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "efd9b7f9-df18-476b-a7d6-937d3d352faf";
+
+    // Hide Crisp by default when loaded
+    $crisp.push(["safe", true]); // Use safe mode to avoid errors
+    $crisp.push(["do", "chat:hide"]);
+
     (function () {
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/6960db761d2981197cba4eee/default'; // User Provided Property ID
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
+        var d = document;
+        var s = d.createElement("script");
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
     })();
+
+    // --- Custom Chatbot Logic ---
+    const chatbotContainer = document.getElementById('chatbot-container');
+    const chatWindow = document.getElementById('chat-window');
+    const toggleBtn = document.getElementById('chatbot-toggle-btn');
+    const closeBtn = document.getElementById('close-chat');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const chatMessages = document.getElementById('chat-messages');
+
+    if (chatbotContainer && chatWindow && toggleBtn) {
+        // Toggle Chat Window
+        toggleBtn.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+            // Hide badge when opened
+            const badge = toggleBtn.querySelector('.notification-badge');
+            if (badge) badge.style.display = 'none';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+        });
+
+        // Send Message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // Add User Message
+                addMessage(message, 'user');
+                chatInput.value = '';
+
+                // Show Typing Indicator
+                showTypingIndicator();
+
+                // Simulare Bot Response
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    const response = getBotResponse(message);
+                    addMessage(response, 'bot');
+                }, 1000);
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Add Message to UI
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Send predefined option
+        window.sendOption = function (option) {
+            // Add User Message (visible)
+            addMessage(option, 'user');
+
+            // Google Auth Check for Contact Officer
+            if (option === 'ติดต่อเจ้าหน้าที่') {
+                // Check if already logged in via Google
+                if (window.googleUserEmail) {
+                    confirmHandover(window.googleUserEmail);
+                } else {
+                    // Request Login
+                    addMessage("กรุณาเข้าสู่ระบบด้วย Google เพื่อยืนยันตัวตนก่อนติดต่อเจ้าหน้าที่ครับ", 'bot');
+                    showGoogleLogin();
+                }
+                return;
+            }
+
+            // Simulate Bot Response
+
+            // Simulate Bot Response
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = getBotResponse(option);
+                addMessage(response, 'bot');
+            }, 800);
+        }
+
+        // --- Google Auth Logic ---
+        function showGoogleLogin() {
+            const loginContainerId = 'google-login-container-' + Date.now();
+            const loginDiv = document.createElement('div');
+            loginDiv.id = loginContainerId;
+            loginDiv.className = 'google-login-wrapper';
+            loginDiv.style.marginTop = '10px';
+            loginDiv.style.display = 'flex';
+            loginDiv.style.justifyContent = 'center';
+            chatMessages.appendChild(loginDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            if (window.google) {
+                google.accounts.id.initialize({
+                    client_id: "1052435949448-e5j9sjdboj9emb7nsudts1ivifrtlt3q.apps.googleusercontent.com",
+                    callback: handleCredentialResponse
+                });
+                google.accounts.id.renderButton(
+                    document.getElementById(loginContainerId),
+                    { theme: "outline", size: "large", width: "250" }  // customization attributes
+                );
+            } else {
+                addMessage("ระบบ Google Login กำลังโหลด กรุณารอสักครู่...", 'bot');
+            }
+        }
+
+        function handleCredentialResponse(response) {
+            // Decode JWT to get user info (Simple client-side decode)
+            const responsePayload = decodeJwtResponse(response.credential);
+
+            console.log("ID: " + responsePayload.sub);
+            console.log('Full Name: ' + responsePayload.name);
+            console.log('Given Name: ' + responsePayload.given_name);
+            console.log('Family Name: ' + responsePayload.family_name);
+            console.log("Image URL: " + responsePayload.picture);
+            console.log("Email: " + responsePayload.email);
+
+            window.googleUserEmail = responsePayload.email;
+            confirmHandover(responsePayload.email);
+        }
+
+        function decodeJwtResponse(token) {
+            var base64Url = token.split('.')[1];
+            var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
+
+        function confirmHandover(email) {
+            addMessage(`ยืนยันตัวตนสำเร็จ! สวัสดีคุณ ${email}`, 'bot');
+            setTimeout(() => {
+                addMessage("กำลังส่งต่อให้เจ้าหน้าที่ครับ... กรุณารอสักครู่", 'bot');
+
+                // Pass email to Crisp (Optional: Set user email in Crisp)
+                if (window.$crisp) {
+                    $crisp.push(["set", "user:email", [email]]);
+                }
+
+                setTimeout(() => {
+                    switchToLiveChat();
+                }, 1500);
+            }, 1000);
+        }
+
+        function switchToLiveChat() {
+            // Hide custom chatbot
+            chatWindow.classList.remove('active');
+
+            // Show Crisp
+            try {
+                if (typeof $crisp !== 'undefined') {
+                    $crisp.push(["do", "chat:show"]);
+                    $crisp.push(["do", "chat:open"]);
+                } else {
+                    // Fallback if script hasn't loaded yet
+                    alert("ระบบ Live Chat กำลังโหลด... กรุณารอสักครู่");
+                    setTimeout(() => {
+                        $crisp.push(["do", "chat:show"]);
+                        $crisp.push(["do", "chat:open"]);
+                    }, 2000);
+                }
+            } catch (e) {
+                console.error("Crisp error:", e);
+                window.open('https://go.crisp.chat/chat/embed/?website_id=efd9b7f9-df18-476b-a7d6-937d3d352faf', '_blank');
+            }
+        }
+
+        // Typing Indicator Helpers
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('typing');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingDiv = document.getElementById('typing-indicator');
+            if (typingDiv) typingDiv.remove();
+        }
+
+        // Simple Rule Model
+        function getBotResponse(input) {
+            input = input.toLowerCase();
+
+            if (input.includes('บริการ') || input.includes('service')) {
+                return "เรามีบริการ IT Outsource, Infrastructure (Network/WiFi), Cyber Security และจำหน่ายอุปกรณ์ไอทีครับ สามารถดูรายละเอียดเพิ่มเติมได้ที่หน้า 'บริการของเรา' ครับ";
+            } else if (input.includes('ราคา') || input.includes('price') || input.includes('package')) {
+                return "ราคาเริ่มต้นสำหรับการดูแลระบบรายเดือนเริ่มต้นที่ 2,500 บาท/เดือน ครับ (สำหรับสำนักงานขนาดเล็ก) หากต้องการใบเสนอราคา รบกวนแจ้งขนาดองค์กรและจำนวนเครื่องคอมพิวเตอร์ครับ";
+            } else if (input.includes('ติดต่อ') || input.includes('contact') || input.includes('โทร') || input.includes('ที่อยู่') || input.includes('เจ้าหน้าที่')) {
+                return "สามารถติดต่อเจ้าหน้าที่ผ่านช่องทาง Live Chat ได้เลยครับ (เลือกเมนู 'ติดต่อเจ้าหน้าที่')";
+            } else if (input.includes('ปัญหา') || input.includes('แจ้ง') || input.includes('support')) {
+                return "หากพบปัญหาการใช้งาน สามารถแจ้งรายละเอียดไว้ที่นี่ หรือโทรสายด่วน 08X-XXX-XXXX ได้เลยครับ ทีมงานพร้อม Support ครับ";
+            } else if (input.includes('สวัสดี') || input.includes('hello') || input.includes('hi')) {
+                return "สวัสดีครับ! ยินดีต้อนรับสู่ IT Solution ครับ มีอะไรให้ช่วยบอกได้เลยนะครับ";
+            } else {
+                return "ขออภัยครับ ผมอาจจะยังไม่เข้าใจคำถาม รบกวนลองเลือกหัวข้อจากเมนูด้านบน หรือติดต่อเจ้าหน้าที่โดยตรงที่หน้า 'ติดต่อเรา' ได้เลยครับ";
+            }
+        }
+    }
 });

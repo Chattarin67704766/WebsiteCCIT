@@ -142,6 +142,7 @@
             }
         }
     </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
@@ -344,6 +345,39 @@
             </div>
         </div>
     </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-container">
+        <div id="chat-window">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i class="fas fa-robot"></i>
+                    <span>น้องผู้ช่วย (IT Support)</span>
+                </div>
+                <button id="close-chat"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="chat-messages">
+                <div class="message bot-message">
+                    สวัสดีครับ! มีอะไรให้ผมช่วยไหมครับ? สามารถเลือกหัวข้อด้านล่างได้เลยครับ
+                </div>
+                <!-- Predefined Options -->
+                <div class="chat-options">
+                    <button class="option-btn" onclick="sendOption('บริการของเรา')">บริการของเรา</button>
+                    <button class="option-btn" onclick="sendOption('ราคา/Package')">ราคา/Package</button>
+                    <button class="option-btn" onclick="sendOption('ติดต่อเจ้าหน้าที่')">ติดต่อเจ้าหน้าที่</button>
+                    <button class="option-btn" onclick="sendOption('แจ้งปัญหา')">แจ้งปัญหา</button>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="พิมพ์ข้อความที่นี่...">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button id="chatbot-toggle-btn">
+            <i class="fas fa-comment-dots"></i>
+            <span class="notification-badge">1</span>
+        </button>
+    </div>
 
     <script src="script.js"></script>
 </body>
